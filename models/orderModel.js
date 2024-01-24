@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 //Connecting to orders database
 const dbURI =
-  "mongodb+srv://r4raheesamumthaz:admin123@cluster0.ujrapcs.mongodb.net/Orders?retryWrites=true&w=majority";;
+  "mongodb+srv://r4raheesamumthaz:admin123@cluster0.ujrapcs.mongodb.net/Orders?retryWrites=true&w=majority";
 const productConn = mongoose.createConnection(dbURI);
 
 const orderSchema = new mongoose.Schema({

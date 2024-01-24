@@ -12,9 +12,11 @@ const orderController = require('../controllers/orderController');
  *   post:
  *     summary: Place a new order
  *     tags: ['Orders']
- *     requestBody:
- *       content:
- *        application/json: 
+ *     parameters:
+ *       - in: body
+ *         name: New Order
+ *         description: New order request
+ *         required: true
  *         schema:
  *           type: object
  *           properties:
@@ -42,7 +44,7 @@ router.post('/orders', urlencodedparser, orderController.placeOrder);
  * @swagger
  * /orders/{userId}:
  *   get:
- *     description: Get user's order history
+ *     summary: Get user's order history
  *     tags: ['Orders']
  *     parameters:
  *       - in: path
@@ -63,7 +65,7 @@ router.get('/orders/:userId', urlencodedparser, orderController.getHistory);
  * @swagger
  * /orders/{id}:
  *   put:
- *     description: Update order status
+ *     summary: Update order status
  *     tags: ['Orders']
  *     parameters:
  *       - in: path

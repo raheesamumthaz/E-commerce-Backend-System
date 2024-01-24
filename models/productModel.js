@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 //Connecting to Products database
 const dbURI =
-  "mongodb+srv://r4raheesamumthaz:admin123@cluster0.ujrapcs.mongodb.net/Products?retryWrites=true&w=majority";;
+  "mongodb+srv://r4raheesamumthaz:admin123@cluster0.ujrapcs.mongodb.net/Products?retryWrites=true&w=majority";
 const productConn = mongoose.createConnection(dbURI);
 
 const productSchema = new mongoose.Schema({

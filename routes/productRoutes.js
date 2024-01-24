@@ -27,7 +27,7 @@ router.get('/products' , productController.getProducts);
  *  get:
  *    tags: ['Products']
  *    summary: Get details of a single product
-*     parameters:
+ *    parameters:
  *       - in: path
  *         name: id
  *         required: true
@@ -36,7 +36,7 @@ router.get('/products' , productController.getProducts);
  *        description: details of a single product
  *      '400' :
  *        description: Error occured
-*       '404':
+ *      '404':
  *         description: Product not found
  */
 
@@ -51,9 +51,11 @@ router.get('/products/:id' , productController.getProductbyId);
 *    post:
 *      tags: ['Products']
 *      summary: add a new prodcut
-*      requestBody:
-*         content:
-*           application/json:
+*      parameters:
+*           - in: body
+*             name: New Product
+*             description: The product to add
+*             required: true
 *             schema:
 *               type: object
 *               properties:
@@ -89,10 +91,12 @@ router.post('/products', urlencodedparser, productController.addProduct);
 *           type: string
 *           required: true
 *           description: Object Id of the product to update.
-*      requestBody:
-*         content:
-*           application/json:
-*             schema:
+*         - in: body
+*           name: Updated Data
+*           type: string
+*           required: true
+*           description: data to update for product.
+*           schema:
 *               type: object
 *               properties:
 *                 name:
