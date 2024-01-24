@@ -12,4 +12,25 @@ const cors = require("cors");
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
+
+
+//routes
+const productRoutes= require('./routes/productRoutes');
+//Connect to Customers Database
+const dbURI =
+  "mongodb+srv://r4raheesamumthaz:admin123@cluster0.ujrapcs.mongodb.net/ecommerce?retryWrites=true&w=majority";
+mongoose
+  .connect(dbURI, {
+    connectTimeoutMS: 5000,
+  })
+  .then((x) => {
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
+  })
+  .catch((err) => {
+    console.error("Error connecting to mongo", err);
+  });
+
+app.use('/',[productRoutes]);
 app.listen(4000, () => console.log(`Listening on: 4000`));
