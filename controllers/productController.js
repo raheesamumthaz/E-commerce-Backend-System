@@ -1,5 +1,5 @@
 const product = require('../models/productModel');
-//Get all products
+
 
 //handle errors
 const handleErrors = (err) => {
@@ -12,13 +12,14 @@ const handleErrors = (err) => {
     }
     return error;
 }
+//Get all products
 module.exports.getProducts = async function(req,res){
     
     try {
         const products = await product.find();
         res.status(200).json(products);
       } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
       }
 };
 
@@ -36,7 +37,7 @@ module.exports.getProductbyId = async function(req,res){
         return res.status(200).json({productDetails});
       }
     } catch (error) {
-      return res.status(500).json({ message: error.message });
+      return res.status(400).json({ message: error.message });
     }
 };
 
@@ -48,9 +49,9 @@ module.exports.addProduct = async function (req, res) {
       result = await product.create(newProduct);
       res.status(200).json(result);
       
-    } catch (err) {
-      const error = handleErrors(err);
-      return res.status(500).json({error});
+    } catch (error) {
+      const errors = handleErrors(error);
+      return res.status(400).json({errors});
     }
     
 };
@@ -63,8 +64,8 @@ module.exports.updateProduct= async function (req, res) {
         result = await product.findByIdAndUpdate(id, updatedProduct, { new: true })
         res.status(200).json(result);
         
-      } catch (err) {
-        return res.status(500).json({err});
+      } catch (error) {
+        return res.status(400).json({error});
       }
   };
 
@@ -77,8 +78,8 @@ module.exports.updateProduct= async function (req, res) {
       result = await product.findByIdAndDelete(id);
       res.status(200).json(result);
       
-    } catch (err) {
-      return res.status(500).json({err});
+    } catch (error) {
+      return res.status(400).json({error});
     }
     
 };

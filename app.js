@@ -16,6 +16,7 @@ app.use(cors());
 
 //routes
 const productRoutes= require('./routes/productRoutes');
+const orderRoutes= require('./routes/orderRoutes');
 //Connect to Customers Database
 const dbURI =
   "mongodb+srv://r4raheesamumthaz:admin123@cluster0.ujrapcs.mongodb.net/ecommerce?retryWrites=true&w=majority";
@@ -32,5 +33,5 @@ mongoose
     console.error("Error connecting to mongo", err);
   });
 
-app.use('/',[productRoutes]);
+app.use('/',[productRoutes,orderRoutes]);
 app.listen(4000, () => console.log(`Listening on: 4000`));

@@ -15,7 +15,7 @@ const urlencodedparser = bodyParser.urlencoded({extended: true});
  *    responses:
  *      '200':
  *        description: list of all products
- *      '500' :
+ *      '400' :
  *        description: Error occured
  */
 
@@ -34,7 +34,7 @@ router.get('/products' , productController.getProducts);
  *    responses:
  *      '200':
  *        description: details of a single product
- *      '500' :
+ *      '400' :
  *        description: Error occured
 *       '404':
  *         description: Product not found
